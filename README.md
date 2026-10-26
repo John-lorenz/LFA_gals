@@ -25,6 +25,12 @@ Saída esperada:
 No Windows, os caminhos também podem ser escritos com `\` (`src\gals\*.java`).
 Use sempre `-encoding UTF-8` no `javac`; sem ele, os acentos das mensagens saem quebrados.
 
+Se no PowerShell os acentos aparecerem como `l├®xico`, configure a saída em UTF-8 antes de rodar:
+
+```powershell
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
+
 Para digitar o programa direto no terminal, rode sem arquivo e encerre a entrada
 (Ctrl+Z e Enter no Windows, Ctrl+D no Linux/Mac):
 
