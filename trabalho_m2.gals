@@ -28,6 +28,7 @@ subtracao: "-"
 multiplicacao: "*"
 divisao: "/"
 potencia: "^"
+resto: "%"
 #NonTerminals
 <programa>
 <lista_comandos>
@@ -48,6 +49,7 @@ potencia: "^"
               | <termo>;
 <termo> ::= <termo> multiplicacao <fator> #6
           | <termo> divisao <fator> #7
+          | <termo> resto <fator> #12
           | <fator>;
 <fator> ::= <base> potencia <fator> #8
           | <base>;

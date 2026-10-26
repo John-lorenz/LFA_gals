@@ -44,6 +44,7 @@ java -cp bin gals.Main
 |---|---|
 | `exemplos/enunciado.txt` | O programa do enunciado |
 | `exemplos/todas_operacoes.txt` | Soma, subtração, multiplicação, divisão, potência e log |
+| `exemplos/resto.txt` | Resto da divisão (`%`) e sua precedência |
 | `exemplos/erro_lexico.txt` | Erro léxico (dígito que não é binário) |
 | `exemplos/erro_sintatico.txt` | Erro sintático (falta operando) |
 | `exemplos/erro_negativo.txt` | Erro semântico (subtração com resultado negativo) |
@@ -59,7 +60,7 @@ Show ( B );
 
 - Números só com 0 e 1, inteiros e sem sinal.
 - `X = expressão;` atribui; `Show(expressão);` imprime o valor em binário.
-- Operações: `+`, `-`, `*`, `/` (divisão inteira), `^` (potência) e `log(x)` (log na base 2, parte inteira).
+- Operações: `+`, `-`, `*`, `/` (divisão inteira), `%` (resto), `^` (potência) e `log(x)` (log na base 2, parte inteira).
 
 ## Arquivos
 

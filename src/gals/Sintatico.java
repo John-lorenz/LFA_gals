@@ -19,7 +19,8 @@ public class Sintatico implements Constants
         "'-'",
         "'*'",
         "'/'",
-        "'^'"
+        "'^'",
+        "'%'"
     };
 
     private final Stack<Integer> stack = new Stack<Integer>();
@@ -95,7 +96,7 @@ public class Sintatico implements Constants
     private String mensagemErro(int state)
     {
         StringBuilder esperados = new StringBuilder();
-        for (int t = DOLLAR; t <= t_potencia; t++)
+        for (int t = DOLLAR; t <= t_resto; t++)
         {
             if (PARSER_TABLE[state][t-1][0] != ERROR)
             {

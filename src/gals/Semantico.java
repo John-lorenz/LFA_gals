@@ -21,6 +21,7 @@ import java.util.Map;
  *  #9  empilha a constante binária lida
  *  #10 empilha o valor da variável lida
  *  #11 logaritmo na base 2, parte inteira: log(x)   erro se x = 0
+ *  #12 resto da divisão (a % b)   erro se b = 0
  */
 public class Semantico implements Constants
 {
@@ -102,6 +103,14 @@ public class Semantico implements Constants
                 if (a.signum() == 0)
                     throw new SemanticError("log(0) é indefinido", token.getPosition());
                 pilha.push(BigInteger.valueOf(a.bitLength() - 1));
+                break;
+
+            case 12:
+                b = pilha.pop();
+                a = pilha.pop();
+                if (b.signum() == 0)
+                    throw new SemanticError("Resto de divisão por zero", token.getPosition());
+                pilha.push(a.mod(b));
                 break;
         }
     }

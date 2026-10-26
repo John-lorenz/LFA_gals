@@ -18,5 +18,6 @@ public interface Constants extends ScannerConstants, ParserConstants
     int t_multiplicacao = 12;
     int t_divisao = 13;
     int t_potencia = 14;
+    int t_resto = 15;
 
 }
