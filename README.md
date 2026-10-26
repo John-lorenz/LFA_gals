@@ -31,11 +31,24 @@ Se no PowerShell os acentos aparecerem como `l├®xico`, configure a saída em 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 ```
 
-Para digitar o programa direto no terminal, rode sem arquivo e encerre a entrada
-(Ctrl+Z e Enter no Windows, Ctrl+D no Linux/Mac):
+### Modo interativo
+
+Rodando sem arquivo (ou pelo botão Run da IDE), o interpretador executa cada comando
+assim que ele termina em `;`. As variáveis continuam valendo entre um comando e outro,
+e um erro não encerra a sessão. Digite `sair` para encerrar.
 
 ```bash
 java -cp bin gals.Main
+```
+
+```
+> A = 10;
+> B = 11;
+> Show(A + B);
+101
+> Show(A - B);
+Erro semântico na linha 1, coluna 9: Subtração com resultado negativo (10 - 11): ...
+> sair
 ```
 
 ## Exemplos

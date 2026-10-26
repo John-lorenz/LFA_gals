@@ -31,6 +31,12 @@ public class Semantico implements Constants
     private final Deque<BigInteger> pilha = new ArrayDeque<>();
     private String variavelDestino;
 
+    /** Descarta valores que sobraram na pilha quando um comando para no meio por causa de um erro. */
+    public void limparPilha()
+    {
+        pilha.clear();
+    }
+
     public void executeAction(int action, Token token) throws SemanticError
     {
         BigInteger a, b;
