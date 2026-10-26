@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -21,9 +22,8 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        // Saída sempre em UTF-8, para os acentos aparecerem certos no terminal
-        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8));
-        System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.err), true, StandardCharsets.UTF_8));
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, charsetSaida("sun.stdout.encoding")));
+        System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.err), true, charsetSaida("sun.stderr.encoding")));
 
         String fonte;
         if (args.length > 0)
@@ -79,6 +79,15 @@ public class Main
         }
         System.err.println(tipo + " na linha " + linha + ", coluna " + coluna + ": " + msg);
         System.exit(1);
+    }
+
+    /** Usa a codificação do console (ex.: cp850 no Windows); se a saída for redirecionada, usa UTF-8. */
+    private static Charset charsetSaida(String propriedade)
+    {
+        String nome = System.getProperty(propriedade);
+        if (nome != null && Charset.isSupported(nome))
+            return Charset.forName(nome);
+        return StandardCharsets.UTF_8;
     }
 
     private static String lerTudo(Reader r) throws IOException
