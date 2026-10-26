@@ -1,0 +1,57 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+Package = gals
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = Stream
+Parser = SLR
+#RegularDefinitions
+letra: [a-zA-Z_]
+digito: [0-9]
+#Tokens
+ :[\ \n\t\r\s]+
+binario: [01]+
+id: {letra} ({letra} | {digito})*
+show = id : "Show"
+log = id : "log"
+atribuicao: "="
+pv: ";"
+abre_par: "("
+fecha_par: ")"
+soma: "+"
+subtracao: "-"
+multiplicacao: "*"
+divisao: "/"
+potencia: "^"
+#NonTerminals
+<programa>
+<lista_comandos>
+<comando>
+<destino>
+<expressao>
+<termo>
+<fator>
+<base>
+#Grammar
+<programa> ::= <lista_comandos>;
+<lista_comandos> ::= <lista_comandos> <comando> | <comando>;
+<comando> ::= <destino> atribuicao <expressao> pv #2
+            | show abre_par <expressao> fecha_par pv #3;
+<destino> ::= id #1;
+<expressao> ::= <expressao> soma <termo> #4
+              | <expressao> subtracao <termo> #5
+              | <termo>;
+<termo> ::= <termo> multiplicacao <fator> #6
+          | <termo> divisao <fator> #7
+          | <fator>;
+<fator> ::= <base> potencia <fator> #8
+          | <base>;
+<base> ::= binario #9
+         | id #10
+         | abre_par <expressao> fecha_par
+         | log abre_par <expressao> fecha_par #11;

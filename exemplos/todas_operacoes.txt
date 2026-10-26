@@ -1,0 +1,17 @@
+X = 1100;
+Y = 11;
+Soma = X + Y;
+Sub = X - Y;
+Mult = X * Y;
+Div = X / Y;
+Pot = Y ^ 10;
+Lg = log(X);
+Show(Soma);
+Show(Sub);
+Show(Mult);
+Show(Div);
+Show(Pot);
+Show(Lg);
+Show((X + Y) * 10);
+Show(10 ^ 11 ^ 10);
+Show(log(10000000000));
